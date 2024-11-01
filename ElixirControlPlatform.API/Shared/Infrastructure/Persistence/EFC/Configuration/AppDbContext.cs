@@ -1,3 +1,4 @@
+using ElixirControlPlatform.API.CustomerManagement.Domain.Model.Aggregates;
 using ElixirControlPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,18 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
          
          
       //===================================== 2. GUSTAVO Bounded Context ================================
-         
+      builder.Entity<Client>().ToTable("Clients");
+      builder.Entity<Client>().HasKey(f => f.Id);
+      builder.Entity<Client>().Property(f => f.Id).IsRequired().ValueGeneratedOnAdd();
+      builder.Entity<Client>().Property(f => f.PersonName).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.Dni).IsRequired().HasMaxLength(20);
+      builder.Entity<Client>().Property(f => f.Email).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.BusinessName).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.Phone).IsRequired().HasMaxLength(20);
+      builder.Entity<Client>().Property(f => f.Address).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.Country).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.City).IsRequired().HasMaxLength(100);
+      builder.Entity<Client>().Property(f => f.Ruc).IsRequired().HasMaxLength(20);
          
       //===================================== END GUSTAVO Bounded Context ===============================
          
