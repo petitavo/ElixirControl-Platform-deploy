@@ -1,22 +1,22 @@
-# Usa la imagen de .NET 8 para construir la aplicación
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+# Usa la imagen del SDK de .NET 6.0 para construir la aplicación
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 
-# Copia el archivo de solución y restaura las dependencias
+# Copia el archivo de solución y los proyectos necesarios
 COPY ElixirControl-Platform.sln ./
 COPY ElixirControlPlatform.API/*.csproj ./ElixirControlPlatform.API/
 
-# Restaura las dependencias
+# Restaura las dependencias para que sean compatibles con .NET 6.0
 RUN dotnet restore
 
 # Copia el resto del código fuente
 COPY . ./
 
 # Publica la aplicación en modo Release
-RUN dotnet publish ElixirControlPlatform.API/ElixirControlPlatform.API.csproj -c Release -o out --self-contained -r linux-x64
+RUN dotnet publish ElixirControlPlatform.API/ElixirControlPlatform.API.csproj -c Release -o out
 
 # Configura la imagen de producción
-FROM mcr.microsoft.com/dotnet/runtime-deps:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
