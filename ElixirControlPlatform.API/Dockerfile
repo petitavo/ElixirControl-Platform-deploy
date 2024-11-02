@@ -1,4 +1,4 @@
-# Usa una imagen de .NET 8 para construir la aplicación
+# Usa la imagen de .NET 8 para construir la aplicación
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
@@ -21,7 +21,7 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 # Expone el puerto que usará la aplicación
-EXPOSE 8080
+EXPOSE 80
 
 # Comando para ejecutar la aplicación
 ENTRYPOINT ["dotnet", "ElixirControlPlatform.API.dll"]
