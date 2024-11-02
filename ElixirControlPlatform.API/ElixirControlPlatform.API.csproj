@@ -7,25 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- Dependency Injection related packages -->
+        <!-- Paquetes relacionados con la Inyección de Dependencias -->
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
 
-        <!-- EntityFrameworkCore Database Persistence related packages -->
+        <!-- Paquetes de Persistencia de Base de Datos EntityFrameworkCore -->
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.35" />
-        <!-- Consider removing or replacing this with Tools if needed -->
-        <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="6.0.10" /> -->
+        <!-- Asegúrate de usar la versión correcta -->
+        <PackageReference Include="EntityFrameworkCore.CreatedUpdatedDate" Version="6.0.0" /> <!-- O la versión compatible correcta -->
 
-        <!-- MySQL Database Persistence related packages -->
+        <!-- Paquetes de Persistencia de Base de Datos MySQL -->
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.33" />
 
-        <!-- Audit Trails related packages -->
-        <PackageReference Include="EntityFrameworkCore.CreatedUpdatedDate" Version="6.0.1" /> <!-- Update this version as necessary -->
-
-        <!-- Naming convention conversion related packages -->
+        <!-- Paquetes relacionados con la conversión de convenciones de nombres -->
         <PackageReference Include="Humanizer" Version="2.14.1" />
 
-        <!-- OpenAPI documentation related packages -->
+        <!-- Paquetes relacionados con documentación OpenAPI -->
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0" />
     </ItemGroup>
